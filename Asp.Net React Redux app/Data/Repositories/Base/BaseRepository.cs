@@ -32,24 +32,34 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
         }
 
         public virtual IList<TType> GetAll() {
-            return DbSet.ToList();
+            return DbSet.Where(x => !x.IsDeleted).ToList();
         }
 
         public virtual async Task<IList<TType>> GetAllAsync(
             CancellationToken cancellationToken = new CancellationToken()
         ) {
-            return await DbSet.ToListAsync(cancellationToken);
+            return await DbSet.Where(x => !x.IsDeleted).ToListAsync(cancellationToken);
         }
 
         public virtual TType GetById(TTypeId id) {
-            return DbSet.Find(id);
+            var result = DbSet.Find(id);
+            if (result.IsDeleted) {
+                return null;
+            }
+
+            return result;
         }
 
         public virtual async Task<TType> GetByIdAsync(
             TTypeId id,
             CancellationToken cancellationToken = new CancellationToken()
         ) {
-            return await DbSet.FindAsync(id, cancellationToken);
+            var result = await DbSet.FindAsync(id, cancellationToken);
+            if (result.IsDeleted) {
+                return null;
+            }
+
+            return result;
         }
 
         public virtual bool Create(TType param) {
@@ -63,6 +73,15 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
         ) {
             await DbSet.AddAsync(param);
             return await DataContext.SaveChangesAsync(cancellationToken) > 0;
+        }
+
+        public void Delete(TType param) {
+            if (param.IsDeleted) {
+                return;
+            }
+
+            param.IsDeleted = true;
+            DbSet.Update(param);
         }
     }
 }
