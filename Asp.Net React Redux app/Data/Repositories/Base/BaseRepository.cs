@@ -75,7 +75,7 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
             return await DataContext.SaveChangesAsync(cancellationToken) > 0;
         }
 
-        public void Delete(TType param) {
+        public virtual void Delete(TType param) {
             if (param.IsDeleted) {
                 return;
             }
