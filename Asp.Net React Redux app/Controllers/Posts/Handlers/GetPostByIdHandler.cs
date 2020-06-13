@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Asp.Net_React_Redux_app.Controllers.Posts.Queries;
+using Asp.Net_React_Redux_app.Controllers.Posts.Queries.GetPostById;
 using Asp.Net_React_Redux_app.Data;
 using AutoMapper;
 using MediatR;

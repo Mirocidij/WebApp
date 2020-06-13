@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Asp.Net_React_Redux_app.Controllers.Posts.Commands;
-using Asp.Net_React_Redux_app.Controllers.Posts.Queries;
+using Asp.Net_React_Redux_app.Controllers.Posts.Commands.Create;
+using Asp.Net_React_Redux_app.Controllers.Posts.Queries.GetPostById;
 using Asp.Net_React_Redux_app.Data.Repositories.PostRepo;
 using Asp.Net_React_Redux_app.Models;
 using AutoMapper;
@@ -27,7 +27,7 @@ namespace Asp.Net_React_Redux_app.Controllers.Posts {
         }
 
         [HttpGet]
-        public async Task<ActionResult<IList<Post>>> GetAll() {
+        public async Task<ActionResult<IList<Post>>> GetAllPosts() {
             var posts = await _postRepository.GetAllAsync();
 
             if (posts.Count > 0) {

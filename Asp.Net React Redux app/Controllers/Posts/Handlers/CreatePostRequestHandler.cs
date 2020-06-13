@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Asp.Net_React_Redux_app.Controllers.Posts.Commands;
+using Asp.Net_React_Redux_app.Controllers.Posts.Commands.Create;
 using Asp.Net_React_Redux_app.Data;
 using Asp.Net_React_Redux_app.Models;
 using AutoMapper;

@@ -1,7 +1,6 @@
 import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
 
-// The top-level state object
 export interface ApplicationState {
     counter: Counter.CounterState | undefined;
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
