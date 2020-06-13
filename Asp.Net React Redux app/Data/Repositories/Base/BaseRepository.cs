@@ -10,8 +10,8 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
         BaseRepository<TType, TTypeId, TDataContext> : IBaseRepository<TType, TTypeId>
         where TType : Entity<TTypeId>
         where TDataContext : DbContext {
-        protected TDataContext DataContext { get; private set; }
-        protected DbSet<TType> DbSet { get; private set; }
+        protected TDataContext DataContext { get; }
+        protected DbSet<TType> DbSet { get; }
 
         public BaseRepository(
             TDataContext dataContext
@@ -24,7 +24,7 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
                 .SingleOrDefault(x => x.PropertyType == typeof(DbSet<TType>));
 
             try {
-                DbSet = (DbSet<TType>)property.GetValue(dataContext);
+                DbSet = (DbSet<TType>)property?.GetValue(dataContext);
             } catch (Exception e) {
                 throw new TypeInitializationException(
                     nameof(BaseRepository<TType, TTypeId, TDataContext>), e);
@@ -71,7 +71,22 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
             TType param,
             CancellationToken cancellationToken = new CancellationToken()
         ) {
-            await DbSet.AddAsync(param);
+            await DbSet.AddAsync(param, cancellationToken);
+            return await DataContext.SaveChangesAsync(cancellationToken) > 0;
+        }
+
+        public virtual bool Update(
+            TType param) {
+            DbSet.Update(param
+            );
+            return DataContext.SaveChanges() > 0;
+        }
+
+        public virtual async Task<bool> UpdateAsync(
+            TType param,
+            CancellationToken cancellationToken = new CancellationToken()
+        ) {
+            DbSet.Update(param);
             return await DataContext.SaveChangesAsync(cancellationToken) > 0;
         }
 

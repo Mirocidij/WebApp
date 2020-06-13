@@ -11,6 +11,8 @@ namespace Asp.Net_React_Redux_app.Data.Repositories.Base {
         Task<TType> GetByIdAsync(TTypeId id, CancellationToken cancellationToken = new CancellationToken());
         bool Create(TType param);
         Task<bool> CreateAsync(TType param, CancellationToken cancellationToken = new CancellationToken());
+        bool Update(TType param);
+        Task<bool> UpdateAsync(TType param, CancellationToken cancellationToken = new CancellationToken());
         void Delete(TType param);
     }
 }

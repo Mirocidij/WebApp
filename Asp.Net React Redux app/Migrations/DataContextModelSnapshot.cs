@@ -19,6 +19,27 @@ namespace Asp.Net_React_Redux_app.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("Asp.Net_React_Redux_app.Models.Company", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
             modelBuilder.Entity("Asp.Net_React_Redux_app.Models.Post", b =>
                 {
                     b.Property<long>("Id")
@@ -49,6 +70,9 @@ namespace Asp.Net_React_Redux_app.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<long?>("CompanyId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatingDatetime")
                         .HasColumnType("timestamp without time zone");
 
@@ -69,7 +93,16 @@ namespace Asp.Net_React_Redux_app.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Asp.Net_React_Redux_app.Models.User", b =>
+                {
+                    b.HasOne("Asp.Net_React_Redux_app.Models.Company", "Company")
+                        .WithMany("Users")
+                        .HasForeignKey("CompanyId");
                 });
 #pragma warning restore 612, 618
         }

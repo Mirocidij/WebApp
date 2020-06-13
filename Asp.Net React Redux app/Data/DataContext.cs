@@ -7,5 +7,6 @@ namespace Asp.Net_React_Redux_app.Data {
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Asp.Net_React_Redux_app.Data;
+using Asp.Net_React_Redux_app.Data.Repositories.CompanyRepo;
 using Asp.Net_React_Redux_app.Data.Repositories.PostRepo;
 using Asp.Net_React_Redux_app.Data.Repositories.UserRepo;
 using AutoMapper;
@@ -35,6 +36,7 @@ namespace Asp.Net_React_Redux_app {
 
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
 
             services.AddSpaStaticFiles(configuration => {
                 configuration.RootPath = "ClientApp/build";
@@ -58,7 +60,7 @@ namespace Asp.Net_React_Redux_app {
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-            
+
             app.UseRouting();
             
             app.UseEndpoints(endpoints => {

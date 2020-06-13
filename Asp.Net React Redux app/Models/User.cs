@@ -8,5 +8,8 @@ namespace Asp.Net_React_Redux_app.Models {
         public string Phone { get; set; }
         public DateTime CreatingDatetime { get; set; }
         public string Email { get; set; }
+        
+        public long? CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }
