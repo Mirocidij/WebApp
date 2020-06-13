@@ -19,6 +19,8 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+        <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     </ItemGroup>
 
     <ItemGroup>

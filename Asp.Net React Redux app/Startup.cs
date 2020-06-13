@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Asp.Net_React_Redux_app {
     public class Startup {
@@ -22,9 +23,11 @@ namespace Asp.Net_React_Redux_app {
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services) {
-            services.AddDbContext<DataContext>(options =>
+            services.AddDbContext<DataContext>(options => {
                 options.UseNpgsql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"));
+                options.UseLoggerFactory(MyLoggerProvider);
+            });
             
             services.AddControllersWithViews().AddFluentValidation();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -33,12 +36,16 @@ namespace Asp.Net_React_Redux_app {
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            // services.AddSpaStaticFiles(configuration => {
-            //     configuration.RootPath = "ClientApp/build";
-            // });
+            services.AddSpaStaticFiles(configuration => {
+                configuration.RootPath = "ClientApp/build";
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public static readonly ILoggerFactory
+            MyLoggerProvider = LoggerFactory.Create(builder => {
+                builder.AddProvider(new MyLoggerProvider());
+            });
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
