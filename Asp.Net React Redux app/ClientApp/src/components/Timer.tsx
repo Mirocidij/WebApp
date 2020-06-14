@@ -20,7 +20,7 @@ export default class Timer extends PureComponent<{}, { date: Date }> {
       date: new Date()
     })
   }
-  
+
   render() {
     return (
       <div>

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp.Net React Redux app", "Asp.Net React Redux app\Asp.Net React Redux app.csproj", "{021A614A-6B71-4A60-AFCE-0A0ADB88DBA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyRepository", "EasyRepository\EasyRepository.csproj", "{521BC8D7-B643-46D3-B51E-E990CF395CA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,11 @@ Global
 		{021A614A-6B71-4A60-AFCE-0A0ADB88DBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{021A614A-6B71-4A60-AFCE-0A0ADB88DBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{021A614A-6B71-4A60-AFCE-0A0ADB88DBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521BC8D7-B643-46D3-B51E-E990CF395CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521BC8D7-B643-46D3-B51E-E990CF395CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521BC8D7-B643-46D3-B51E-E990CF395CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521BC8D7-B643-46D3-B51E-E990CF395CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

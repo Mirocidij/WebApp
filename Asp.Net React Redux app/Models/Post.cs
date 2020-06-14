@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using Asp.Net_React_Redux_app.Data.Repositories.Base;
+using EasyRepository.ModelBase;
 
 namespace Asp.Net_React_Redux_app.Models {
     public class Post : Entity<long> {

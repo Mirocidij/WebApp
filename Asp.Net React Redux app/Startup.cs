@@ -1,6 +1,7 @@
 using System;
 using Asp.Net_React_Redux_app.Data;
 using Asp.Net_React_Redux_app.Data.Repositories.CompanyRepo;
+using Asp.Net_React_Redux_app.Data.Repositories.OrderRepo;
 using Asp.Net_React_Redux_app.Data.Repositories.PostRepo;
 using Asp.Net_React_Redux_app.Data.Repositories.UserRepo;
 using AutoMapper;
@@ -37,6 +38,7 @@ namespace Asp.Net_React_Redux_app {
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
 
             services.AddSpaStaticFiles(configuration => {
                 configuration.RootPath = "ClientApp/build";

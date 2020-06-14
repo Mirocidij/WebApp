@@ -37,22 +37,7 @@ const Home = () => (
 
     <pre>
       <code
-        className="cs my-code" id="first-example"
-        onDoubleClick={() => {
-          let tag = document.getElementById("first-example");
-
-          if (tag == null) return;
-          
-          let text = tag.innerHTML;
-
-          navigator.clipboard.writeText(text)
-            .then(() => {
-                alert("Текст скопирован в буфер обмена");
-              },
-              (error) => {
-                alert(error);
-              })
-        }}>
+        className="java my-code" id="first-example">
         {
           FirstCodeExample()
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Asp.Net_React_Redux_app.Data.Repositories.Base;
+using EasyRepository.ModelBase;
 
 namespace Asp.Net_React_Redux_app.Models {
     public class Company : Entity<long> {

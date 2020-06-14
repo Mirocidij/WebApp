@@ -27,9 +27,11 @@ namespace Asp.Net_React_Redux_app.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("CompanyDescription")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
@@ -38,6 +40,26 @@ namespace Asp.Net_React_Redux_app.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("Asp.Net_React_Redux_app.Models.Order", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Asp.Net_React_Redux_app.Models.Post", b =>
@@ -96,6 +118,15 @@ namespace Asp.Net_React_Redux_app.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Asp.Net_React_Redux_app.Models.Order", b =>
+                {
+                    b.HasOne("Asp.Net_React_Redux_app.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Asp.Net_React_Redux_app.Models.User", b =>

@@ -21,6 +21,8 @@ namespace Asp.Net_React_Redux_app.Controllers {
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get() {
+            _logger.LogInformation("Get request was received");
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast {
                     Date = DateTime.Now.AddDays(index),

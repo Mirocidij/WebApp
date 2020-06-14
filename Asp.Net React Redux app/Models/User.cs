@@ -1,5 +1,6 @@
 ﻿using System;
-using Asp.Net_React_Redux_app.Data.Repositories.Base;
+using System.Collections.Generic;
+using EasyRepository.ModelBase;
 
 namespace Asp.Net_React_Redux_app.Models {
     public class User : Entity<long>, IHasCreatingDateTime {
@@ -8,6 +9,8 @@ namespace Asp.Net_React_Redux_app.Models {
         public string Phone { get; set; }
         public DateTime CreatingDatetime { get; set; }
         public string Email { get; set; }
+        
+        public IList<Order> Orders { get; set; }
         
         public long? CompanyId { get; set; }
         public Company Company { get; set; }
