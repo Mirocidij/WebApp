@@ -42,7 +42,7 @@ const Home = () => (
           let tag = document.getElementById("first-example");
 
           if (tag == null) return;
-
+          
           let text = tag.innerHTML;
 
           navigator.clipboard.writeText(text)
@@ -59,7 +59,7 @@ const Home = () => (
       </code>
     </pre>
 
-    <Button variant="contained" color="primary">
+    <Button onClick={() => (console.log("Message"))} variant="contained" color="primary">
       Hello World
     </Button>
   </div>
